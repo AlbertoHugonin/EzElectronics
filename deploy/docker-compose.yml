@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+      args:
+        REACT_APP_API_BASE_URL: ${REACT_APP_API_BASE_URL:-/ezelectronics/}
+    image: ezelectronics-app:latest
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      SERVE_CLIENT: "true"
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:3000}
+    ports:
+      - "127.0.0.1:${APP_PORT:-3001}:3001"
+    volumes:
+      - ezelectronics-db:/app/src/db
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3001/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+volumes:
+  ezelectronics-db:

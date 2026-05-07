@@ -3,7 +3,7 @@ import { Product } from "../Models/product";
 import { UserInfo } from "../Models/user";
 
 
-const baseURL = "http://localhost:3001/ezelectronics/"
+const baseURL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3001/ezelectronics/"
 
 /** ------------------- Access APIs ------------------------ */
 
