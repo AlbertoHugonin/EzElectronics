@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+*.pem
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build and test output
+build/
+dist/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+code/client/build/
+code/server/build/
+code/server/dist/
+
+# Tool caches
+.cache/
+.eslintcache
+.parcel-cache/
+.vite/
+
+# Local editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local Codex/agent workspace metadata
+.agents/
+.codex/
+
+# Docker/runtime scratch data
+deploy/data/
